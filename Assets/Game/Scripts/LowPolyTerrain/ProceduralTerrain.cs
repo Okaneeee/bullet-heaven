@@ -27,8 +27,11 @@ public class ProceduralTerrain : ConfiguratorBase
     
     private void Awake()
     {
-        prefabs = new GameObject("Generated Prefabs");
-        prefabs.transform.parent = this.gameObject.transform;
+        if (generateObjects)
+        {
+            prefabs = new GameObject("Generated Prefabs");
+            prefabs.transform.parent = this.gameObject.transform;
+        }
         
         if (generateWhenStarting)
         {
@@ -59,8 +62,11 @@ public class ProceduralTerrain : ConfiguratorBase
     {
         DestroyImmediate(prefabs);
         
-        prefabs = new GameObject("Generated Prefabs");
-        prefabs.transform.parent = this.gameObject.transform;
+        if (generateObjects)
+        {
+            prefabs = new GameObject("Generated Prefabs");
+            prefabs.transform.parent = this.gameObject.transform;
+        }
     }
 
     private void GeneratePrefabs()
