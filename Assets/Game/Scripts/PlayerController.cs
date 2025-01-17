@@ -12,9 +12,6 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f;
     public float acceleration = 0.2f;
     public float maxSpeed = 30.0f;
-    
-    [Header("Camera")]
-    public Camera playerCamera;
 
     private void Start()
     {
