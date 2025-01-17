@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Keybinds")]
+    [Header("Keybindings")]
     [SerializeField] private InputActionReference moveActionReference;
     [SerializeField] private InputActionReference resetPositionActionReference;
     [SerializeField] private InputActionReference boostActionReference;
