@@ -8,7 +8,7 @@ public class FPSCounter : MonoBehaviour
 
     private int _frameCount;
     private float _deltaTime;
-    private const int FrameRange = 100;
+    private const int FrameRange = 240;
 
     void Update()
     {
