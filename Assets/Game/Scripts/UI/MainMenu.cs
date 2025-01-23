@@ -3,8 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Scene")]
     [SerializeField]
     private string sceneName;
+    
+    [Header("Panels")]
+    [SerializeField]
+    private GameObject[] panels;
+    
+    [SerializeField]
+    private GameObject settingsPanel;
     
     public void Play()
     {
@@ -13,7 +21,12 @@ public class MainMenu : MonoBehaviour
 
     public void Settings()
     {
-        Debug.Log("Settings");
+        foreach(var panel in panels)
+        {
+            panel.SetActive(false);
+        }
+
+        settingsPanel.SetActive(true);
     }
     
     public void Quit()
