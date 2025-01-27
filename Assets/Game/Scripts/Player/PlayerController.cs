@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         // Reset player position
         if (resetPositionActionReference.action.triggered)
         {
-            transform.position = Vector3.zero;
+            transform.position = new Vector3(0, 1, 0);
         }
         
         // Boost player speed
