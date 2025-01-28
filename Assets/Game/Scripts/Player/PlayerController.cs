@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Keybindings")]
     [SerializeField] private InputActionReference moveActionReference;
-    [SerializeField] private InputActionReference boostActionReference;
+    [SerializeField] private InputActionReference dashActionReference;
     [SerializeField] private InputActionReference pauseActionReference;
     
     [Header("Movement")]
@@ -18,16 +18,16 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         moveActionReference.action.Enable();
-        resetPositionActionReference.action.Enable();
+        pauseActionReference.action.Enable();
         dashActionReference.action.Enable();
     }
 
     void Update()
     {
-        // Reset player position
-        if (resetPositionActionReference.action.triggered)
+        // Open pause menu
+        if (pauseActionReference.action.triggered)
         {
-            transform.position = new Vector3(0, 1, 0);
+            Debug.Log("Pause menu opened");
         }
         
         Vector2 moveInput = moveActionReference.action.ReadValue<Vector2>();
