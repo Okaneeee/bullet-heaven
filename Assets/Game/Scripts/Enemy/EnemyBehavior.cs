@@ -31,6 +31,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             Debug.Log("Enemy hit player");
             Destroy(gameObject);
+            PlayerBehavior.Instance.TakeDamage(35.0f);
         }
     }
 }
