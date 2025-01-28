@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         // Open pause menu
         if (pauseActionReference.action.triggered)
         {
-            Debug.Log("Pause menu opened");
+            PauseMenu.Instance.PauseGame();
         }
         
         Vector2 moveInput = moveActionReference.action.ReadValue<Vector2>();
