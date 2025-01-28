@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,12 @@ public class GameOverMenu : MonoBehaviour
     private string gameScene;
     [SerializeField]
     private string mainMenuScene;
+    
+    [Header("Text")]
+    [SerializeField]
+    private TextMeshProUGUI scoreText;
+    [SerializeField]
+    private TextMeshProUGUI timeText;
     
     public void Replay()
     {
@@ -23,5 +30,11 @@ public class GameOverMenu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+    
+    void Start()
+    {
+        scoreText.text = $"Score: {GameManager.Instance.GetScore():00000}";
+        timeText.text = $"Time alive:<br>{GameManager.Instance.GetTime() / 60:00}:{GameManager.Instance.GetTime() % 60:00}";
     }
 }
