@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,19 +6,20 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Keybindings")]
     [SerializeField] private InputActionReference moveActionReference;
-    [SerializeField] private InputActionReference resetPositionActionReference;
     [SerializeField] private InputActionReference boostActionReference;
+    [SerializeField] private InputActionReference pauseActionReference;
     
     [Header("Movement")]
     public float speed = 10.0f;
-    public float acceleration = 0.2f;
-    public float maxSpeed = 30.0f;
+    public float dashDistance = 10.0f;
+    public float dashCooldown = 5.0f;
+    private float _dashTimer;
 
     private void Start()
     {
         moveActionReference.action.Enable();
         resetPositionActionReference.action.Enable();
-        boostActionReference.action.Enable();
+        dashActionReference.action.Enable();
     }
 
     void Update()
@@ -28,20 +30,23 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(0, 1, 0);
         }
         
+        Vector2 moveInput = moveActionReference.action.ReadValue<Vector2>();
+        Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
+        
         // Boost player speed
-        if (boostActionReference.action.IsPressed())
+        if (dashActionReference.action.IsPressed())
         {
-            if (speed < maxSpeed) speed += acceleration;
-        }
-        else
-        {
-            speed = 10.0f;
+            // When dash is pressed, give an impulse in the move direction
+            if (_dashTimer <= 0)
+            {
+                transform.Translate(move * dashDistance, Space.World);
+                _dashTimer = dashCooldown;
+                StartCoroutine(ResetDashTimer());
+            }
         }
         
         // Move the player
-        Vector2 moveInput = moveActionReference.action.ReadValue<Vector2>();
-        Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
-        transform.Translate(move * speed * Time.deltaTime);
+        transform.Translate(move * (speed * Time.deltaTime));
         
         // Look at the move direction
         if (move != Vector3.zero)
@@ -49,5 +54,11 @@ public class PlayerController : MonoBehaviour
             GameObject playerModel = transform.GetChild(0).gameObject;
             playerModel.transform.rotation = Quaternion.LookRotation(move);
         }
+    }
+    
+    private IEnumerator ResetDashTimer()
+    {
+        yield return new WaitForSeconds(dashCooldown);
+        _dashTimer = 0;
     }
 }

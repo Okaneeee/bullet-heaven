@@ -402,11 +402,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveActionReference: {fileID: 7283597839089450177, guid: c25277b074be8404888a8e7229e2751c, type: 3}
-  resetPositionActionReference: {fileID: -7333574879088943945, guid: c25277b074be8404888a8e7229e2751c, type: 3}
-  boostActionReference: {fileID: 820917386553642843, guid: c25277b074be8404888a8e7229e2751c, type: 3}
+  dashActionReference: {fileID: 820917386553642843, guid: c25277b074be8404888a8e7229e2751c, type: 3}
+  pauseActionReference: {fileID: 3971282252647023747, guid: c25277b074be8404888a8e7229e2751c, type: 3}
   speed: 10
-  acceleration: 10
-  maxSpeed: 30
+  dashDistance: 10
+  dashCooldown: 5
 --- !u!114 &4789613259584240951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,7 +448,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2827419193976814136}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -488,7 +488,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 70
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
