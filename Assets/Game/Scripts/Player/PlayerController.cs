@@ -38,18 +38,16 @@ public class PlayerController : MonoBehaviour
             speed = 10.0f;
         }
         
-        // Read movement input
+        // Move the player
         Vector2 moveInput = moveActionReference.action.ReadValue<Vector2>();
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
+        transform.Translate(move * speed * Time.deltaTime);
         
-        // Rotate the player to face the direction of movement
+        // Look at the move direction
         if (move != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(move);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f); // Smooth rotation
+            GameObject playerModel = transform.GetChild(0).gameObject;
+            playerModel.transform.rotation = Quaternion.LookRotation(move);
         }
-        
-        // Move the player
-        transform.Translate(move * speed * Time.deltaTime, Space.World);
     }
 }
