@@ -35,7 +35,7 @@ public class PlayerBehavior : MonoBehaviour
     
     private void Die()
     {   
-        Destroy(gameObject);
         GameManager.Instance.GameOver();
+        Destroy(gameObject);
     }
 }
