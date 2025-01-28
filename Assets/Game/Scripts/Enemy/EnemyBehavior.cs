@@ -4,6 +4,8 @@ public class EnemyBehavior : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField]
+    private float health = 100.0f;
+    [SerializeField]
     private float speed = 5.0f;
     
     private GameObject _player;
@@ -28,8 +30,14 @@ public class EnemyBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Enemy hit player");
-            Destroy(gameObject);
+            Die();
             PlayerBehavior.Instance.TakeDamage(35.0f);
         }
+    }
+
+    private void Die()
+    {
+        TimeAndScore.Instance.AddScore(10);
+        Destroy(gameObject);
     }
 }
