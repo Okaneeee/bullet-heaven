@@ -12,6 +12,7 @@ public class GameOverMenu : MonoBehaviour
     public void Replay()
     {
         SceneManager.LoadScene(gameScene);
+        GameManager.Instance.DestroyThyself();
     }
 
     public void MainMenu()
