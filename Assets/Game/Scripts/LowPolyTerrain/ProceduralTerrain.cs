@@ -1,8 +1,5 @@
-using ProceduralToolkit;
-using ProceduralToolkit.FastNoiseLib;
 using ProceduralToolkit.Samples;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class ProceduralTerrain : ConfiguratorBase
 {
