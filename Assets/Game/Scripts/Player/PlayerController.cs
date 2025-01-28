@@ -14,12 +14,17 @@ public class PlayerController : MonoBehaviour
     public float dashDistance = 10.0f;
     public float dashCooldown = 5.0f;
     private float _dashTimer;
+    
+    [Header("Animation")]
+    private Animator _animator;
 
     private void Start()
     {
         moveActionReference.action.Enable();
         pauseActionReference.action.Enable();
         dashActionReference.action.Enable();
+        
+        _animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -54,6 +59,9 @@ public class PlayerController : MonoBehaviour
             GameObject playerModel = transform.GetChild(0).gameObject;
             playerModel.transform.rotation = Quaternion.LookRotation(move);
         }
+        
+        // Update animator
+        _animator.SetBool("isMoving", move != Vector3.zero);
     }
     
     private IEnumerator ResetDashTimer()
