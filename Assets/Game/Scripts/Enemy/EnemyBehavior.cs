@@ -29,7 +29,6 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Enemy hit player");
             Die();
             PlayerBehavior.Instance.TakeDamage(35.0f);
         }
@@ -39,5 +38,15 @@ public class EnemyBehavior : MonoBehaviour
     {
         TimeAndScore.Instance.AddScore(10);
         Destroy(gameObject);
+    }
+    
+    public void TakeDamage(float dmg)
+    {
+        health -= dmg;
+        
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 }
