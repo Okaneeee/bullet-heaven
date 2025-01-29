@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class IDamager : MonoBehaviour
@@ -11,12 +10,6 @@ public class IDamager : MonoBehaviour
     [SerializeField]
     private AudioClip hitSound;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Enemy"))
