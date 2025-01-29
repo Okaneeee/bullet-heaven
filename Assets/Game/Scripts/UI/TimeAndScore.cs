@@ -38,6 +38,7 @@ public class TimeAndScore : MonoBehaviour
         _timeElapsed += Time.deltaTime;
         timeText.text = $"{_timeElapsed / 60:00}:{_timeElapsed % 60:00}";
     }
+    
     public void AddScore(int score)
     {
         _score += score;

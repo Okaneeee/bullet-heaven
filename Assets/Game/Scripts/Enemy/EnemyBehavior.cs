@@ -6,7 +6,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField]
     private float health = 100.0f;
     [SerializeField]
-    private float speed = 5.0f;
+    private float speed = 3.0f;
     [SerializeField]
     private int xpValue = 15;
     

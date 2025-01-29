@@ -6,9 +6,9 @@ public class ShootAttack : MonoBehaviour
     [SerializeField]
     private GameObject projectile;
     [SerializeField]
-    private float attackFrequency = 1.5f;
+    private float attackFrequency = 1.0f;
     [SerializeField]
-    private float speed = 20.0f;
+    private float speed = 10.0f;
     [SerializeField]
     private float lifeTime = 3.0f;
     
