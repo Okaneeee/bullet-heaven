@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -11,11 +12,12 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField]
     private float maxHealth = 100.0f;
     private float _currentHealth;
-    [SerializeField]
-    private float damage = 34.0f;
     
+    [Header("UI Elements")]
     [SerializeField]
     private Slider healthBar;
+    [SerializeField]
+    private TextMeshProUGUI healthText;
     
     void Awake()
     {
@@ -35,12 +37,14 @@ public class PlayerBehavior : MonoBehaviour
         healthBar.value = maxHealth;
         
         _currentHealth = maxHealth;
+        UpdateHealthText();
     }
     
     public void TakeDamage(float dmg)
     {
         _currentHealth -= dmg;
         healthBar.value = _currentHealth;
+        UpdateHealthText();
         
         if (_currentHealth <= 0)
         {
@@ -53,5 +57,10 @@ public class PlayerBehavior : MonoBehaviour
     {   
         GameManager.Instance.GameOver();
         Destroy(gameObject);
+    }
+    
+    private void UpdateHealthText()
+    {
+        healthText.text = $"{_currentHealth:00}%";
     }
 }

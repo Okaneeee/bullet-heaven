@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float spawnFrequency = 5f;
     [SerializeField]
-    private int enemiesPerSpawn = 3;
+    private int enemiesPerSpawn = 2;
     
     private float _spawnTimer;
     private int _enemiesSpawned;

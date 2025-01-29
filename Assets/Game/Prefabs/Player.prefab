@@ -338,9 +338,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1293029876712600392}
   - component: {fileID: 1925873226565265912}
+  - component: {fileID: 7987569055884316976}
   - component: {fileID: 2639888511457208808}
   - component: {fileID: 4789613259584240951}
-  - component: {fileID: 7987569055884316976}
+  - component: {fileID: -1151965954968081759}
+  - component: {fileID: 263100993856258355}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -390,39 +392,6 @@ CharacterController:
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0.93, z: 0}
---- !u!114 &2639888511457208808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925873226565265906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8454530d66d290445bd69d85bd5adc09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveActionReference: {fileID: 7283597839089450177, guid: c25277b074be8404888a8e7229e2751c, type: 3}
-  dashActionReference: {fileID: 820917386553642843, guid: c25277b074be8404888a8e7229e2751c, type: 3}
-  pauseActionReference: {fileID: 3971282252647023747, guid: c25277b074be8404888a8e7229e2751c, type: 3}
-  speed: 10
-  dashDistance: 10
-  dashCooldown: 5
---- !u!114 &4789613259584240951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925873226565265906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84d94fdce0fd3a74d9d07b20a8d7bb2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 34
-  healthBar: {fileID: 0}
 --- !u!95 &7987569055884316976
 Animator:
   serializedVersion: 7
@@ -445,6 +414,75 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2639888511457208808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925873226565265906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8454530d66d290445bd69d85bd5adc09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveActionReference: {fileID: 7283597839089450177, guid: c25277b074be8404888a8e7229e2751c, type: 3}
+  dashActionReference: {fileID: 820917386553642843, guid: c25277b074be8404888a8e7229e2751c, type: 3}
+  pauseActionReference: {fileID: 3971282252647023747, guid: c25277b074be8404888a8e7229e2751c, type: 3}
+  speed: 10
+  dashDistance: 10
+  dashCooldown: 5
+  moveBoolName: isMoving
+--- !u!114 &4789613259584240951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925873226565265906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d94fdce0fd3a74d9d07b20a8d7bb2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  healthBar: {fileID: 0}
+  healthText: {fileID: 0}
+--- !u!114 &-1151965954968081759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925873226565265906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a41f4e247d744c443a9123a9cc20f134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 7755439453650808355, guid: ab84906638c19c245b77c1c455201da2, type: 3}
+  attackFrequency: 1
+  speed: 10
+  lifeTime: 3
+  shootSound: {fileID: 0}
+  parent: {fileID: 0}
+--- !u!114 &263100993856258355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925873226565265906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d70e8c49ac03804a95faa887626fe8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orb: {fileID: 6047574961689081449, guid: 0a399261fae2dc64394a377d026edf85, type: 3}
+  startingOrbs: 1
+  maxOrbs: 9
+  spinningSpeed: 2.5
+  orbitRadius: 1.5
 --- !u!1 &2827419193976814136
 GameObject:
   m_ObjectHideFlags: 0
