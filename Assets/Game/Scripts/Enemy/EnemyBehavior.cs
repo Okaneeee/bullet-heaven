@@ -6,6 +6,8 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField]
     private float health = 100.0f;
     [SerializeField]
+    private float damage = 15f;
+    [SerializeField]
     private float speed = 3.0f;
     [SerializeField]
     private int xpValue = 15;
@@ -32,7 +34,7 @@ public class EnemyBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Die();
-            PlayerBehavior.Instance.TakeDamage(35.0f);
+            PlayerBehavior.Instance.TakeDamage(damage);
         }
     }
 
