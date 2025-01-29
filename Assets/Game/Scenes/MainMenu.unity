@@ -438,7 +438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Je suis un jeu
+  m_text: K.Psule
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 511b16abc689d294b863eec5f452afd5, type: 2}
   m_sharedMaterial: {fileID: 4281175265019630473, guid: 511b16abc689d294b863eec5f452afd5, type: 2}
