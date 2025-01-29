@@ -26,6 +26,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             var step =  speed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, step);
+            transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
         }
     }
 
