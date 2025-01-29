@@ -7,6 +7,8 @@ public class EnemyBehavior : MonoBehaviour
     private float health = 100.0f;
     [SerializeField]
     private float speed = 5.0f;
+    [SerializeField]
+    private int xpValue = 15;
     
     private GameObject _player;
 
@@ -37,6 +39,7 @@ public class EnemyBehavior : MonoBehaviour
     private void Die()
     {
         TimeAndScore.Instance.AddScore(10);
+        XPManager.Instance.AddXP(xpValue);
         Destroy(gameObject);
     }
     

@@ -13,8 +13,6 @@ public class XPManager : MonoBehaviour
     private int level = 1;
     [SerializeField]
     private int xpToNextLevel = 100;
-    [SerializeField]
-    private int xpPerKill = 10;
     [SerializeField] [Min(1)]
     [Tooltip("Increase the amount of XP needed to level up by this amount")]
     private float xpMultIncrement = 1.5f;
