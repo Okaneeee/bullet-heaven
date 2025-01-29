@@ -16,7 +16,10 @@ public class PlayerController : MonoBehaviour
     private float _dashTimer;
     
     [Header("Animation")]
+    [SerializeField]
+    private string moveBoolName = "isMoving";
     private Animator _animator;
+    
 
     private void Start()
     {
@@ -61,7 +64,7 @@ public class PlayerController : MonoBehaviour
         }
         
         // Update animator
-        _animator.SetBool("isMoving", move != Vector3.zero);
+        _animator.SetBool(moveBoolName, move != Vector3.zero);
     }
     
     private IEnumerator ResetDashTimer()

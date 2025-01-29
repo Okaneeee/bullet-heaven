@@ -14,9 +14,9 @@ public class EnemySpawner : MonoBehaviour
     
     [Header("Spawn")]
     [SerializeField]
-    private float spawnFrequency = 4f;
+    private float spawnFrequency = 5f;
     [SerializeField]
-    private int enemiesPerSpawn = 5;
+    private int enemiesPerSpawn = 3;
     
     private float _spawnTimer;
     private int _enemiesSpawned;
@@ -47,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < enemiesPerSpawn; i++)
         {
             GameObject enemy = Instantiate(enemyPrefab, spawnParent.transform);
-            enemy.transform.position = new Vector3(transform.position.x, 1.5f, transform.position.z);
+            enemy.transform.position = new Vector3(transform.position.x, 2.5f, transform.position.z);
             _enemiesSpawned++;
             yield return new WaitForSeconds(0.1f);
         }
