@@ -60,9 +60,17 @@ public class XPManager : MonoBehaviour
         lvlText.text = $"Level {level}";
         
         XP -= xpToNextLevel;
-        XPBar.maxValue = xpToNextLevel;
         XPBar.value = XP;
         
         xpToNextLevel = (int)(xpToNextLevel * xpMultIncrement);
+        
+        XPBar.maxValue = xpToNextLevel;
+        
+        LevelReached();
+    }
+
+    private void LevelReached()
+    {
+        SpinningOrbAttack.Instance.IncreaseOrbs(); 
     }
 }

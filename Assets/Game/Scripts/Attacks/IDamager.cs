@@ -5,6 +5,8 @@ public class IDamager : MonoBehaviour
     [Header("Stats")]
     [SerializeField]
     private float damage = 50.0f;
+    [SerializeField]
+    private bool shouldDestroyOnHit = true;
     
     [Header("Effects")]
     [SerializeField]
@@ -16,7 +18,10 @@ public class IDamager : MonoBehaviour
         {
             var enemy = other.gameObject.GetComponent<EnemyBehavior>();
             enemy.TakeDamage(damage);
-            DestroyThyself();
+            if(shouldDestroyOnHit)
+            {
+                DestroyThyself();
+            }
         }
     }
 

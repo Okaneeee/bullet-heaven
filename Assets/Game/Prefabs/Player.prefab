@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 2639888511457208808}
   - component: {fileID: 4789613259584240951}
   - component: {fileID: -1151965954968081759}
+  - component: {fileID: 263100993856258355}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -445,8 +446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  damage: 34
   healthBar: {fileID: 0}
+  healthText: {fileID: 0}
 --- !u!114 &-1151965954968081759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,6 +466,23 @@ MonoBehaviour:
   lifeTime: 3
   shootSound: {fileID: 0}
   parent: {fileID: 0}
+--- !u!114 &263100993856258355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925873226565265906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d70e8c49ac03804a95faa887626fe8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orb: {fileID: 6047574961689081449, guid: 0a399261fae2dc64394a377d026edf85, type: 3}
+  startingOrbs: 1
+  maxOrbs: 9
+  spinningSpeed: 2.5
+  orbitRadius: 1.5
 --- !u!1 &2827419193976814136
 GameObject:
   m_ObjectHideFlags: 0
