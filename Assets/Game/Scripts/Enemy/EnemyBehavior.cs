@@ -4,7 +4,13 @@ public class EnemyBehavior : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField]
-    private float speed = 5.0f;
+    private float health = 100.0f;
+    [SerializeField]
+    private float damage = 15f;
+    [SerializeField]
+    private float speed = 3.0f;
+    [SerializeField]
+    private int xpValue = 15;
     
     private GameObject _player;
 
@@ -27,9 +33,25 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Enemy hit player");
-            Destroy(gameObject);
-            PlayerBehavior.Instance.TakeDamage(35.0f);
+            Die();
+            PlayerBehavior.Instance.TakeDamage(damage);
+        }
+    }
+
+    private void Die()
+    {
+        TimeAndScore.Instance.AddScore(10);
+        XPManager.Instance.AddXP(xpValue);
+        Destroy(gameObject);
+    }
+    
+    public void TakeDamage(float dmg)
+    {
+        health -= dmg;
+        
+        if (health <= 0)
+        {
+            Die();
         }
     }
 }

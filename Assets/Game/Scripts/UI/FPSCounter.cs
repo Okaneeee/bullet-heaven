@@ -12,6 +12,8 @@ public class FPSCounter : MonoBehaviour
 
     void Update()
     {
+        if(PauseMenu.Instance.GetPauseState()) return;
+        
         _frameCount++;
         _deltaTime += Time.smoothDeltaTime;
 

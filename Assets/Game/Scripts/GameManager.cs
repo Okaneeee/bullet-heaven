@@ -8,12 +8,16 @@ public class GameManager : MonoBehaviour
     [Header("Scenes")]
     [SerializeField]
     private string gameOverScene;
+
+    private int _gameScore;
+    private float _gameTime;
     
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -23,6 +27,23 @@ public class GameManager : MonoBehaviour
     
     public void GameOver()
     {
+        _gameScore = TimeAndScore.Instance.GetScore();
+        _gameTime = TimeAndScore.Instance.GetTimeElapsed();
         SceneManager.LoadScene(gameOverScene);
+    }
+    
+    public void DestroyThyself()
+    {
+        Destroy(gameObject);
+    }
+    
+    public int GetScore()
+    {
+        return _gameScore;
+    }
+    
+    public float GetTime()
+    {
+        return _gameTime;
     }
 }

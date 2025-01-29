@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,51 +6,70 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Keybindings")]
     [SerializeField] private InputActionReference moveActionReference;
-    [SerializeField] private InputActionReference resetPositionActionReference;
-    [SerializeField] private InputActionReference boostActionReference;
+    [SerializeField] private InputActionReference dashActionReference;
+    [SerializeField] private InputActionReference pauseActionReference;
     
     [Header("Movement")]
     public float speed = 10.0f;
-    public float acceleration = 0.2f;
-    public float maxSpeed = 30.0f;
+    public float dashDistance = 10.0f;
+    public float dashCooldown = 5.0f;
+    private float _dashTimer;
+    
+    [Header("Animation")]
+    [SerializeField]
+    private string moveBoolName = "isMoving";
+    private Animator _animator;
+    
 
     private void Start()
     {
         moveActionReference.action.Enable();
-        resetPositionActionReference.action.Enable();
-        boostActionReference.action.Enable();
+        pauseActionReference.action.Enable();
+        dashActionReference.action.Enable();
+        
+        _animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // Reset player position
-        if (resetPositionActionReference.action.triggered)
+        // Open pause menu
+        if (pauseActionReference.action.triggered)
         {
-            transform.position = new Vector3(0, 1, 0);
+            PauseMenu.Instance.PauseGame();
         }
         
-        // Boost player speed
-        if (boostActionReference.action.IsPressed())
-        {
-            if (speed < maxSpeed) speed += acceleration;
-        }
-        else
-        {
-            speed = 10.0f;
-        }
-        
-        // Read movement input
         Vector2 moveInput = moveActionReference.action.ReadValue<Vector2>();
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
         
-        // Rotate the player to face the direction of movement
-        if (move != Vector3.zero)
+        // Boost player speed
+        if (dashActionReference.action.IsPressed())
         {
-            Quaternion targetRotation = Quaternion.LookRotation(move);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f); // Smooth rotation
+            // When dash is pressed, give an impulse in the move direction
+            if (_dashTimer <= 0)
+            {
+                transform.Translate(move * dashDistance, Space.World);
+                _dashTimer = dashCooldown;
+                StartCoroutine(ResetDashTimer());
+            }
         }
         
         // Move the player
-        transform.Translate(move * speed * Time.deltaTime, Space.World);
+        transform.Translate(move * (speed * Time.deltaTime));
+        
+        // Look at the move direction
+        if (move != Vector3.zero)
+        {
+            GameObject playerModel = transform.GetChild(0).gameObject;
+            playerModel.transform.rotation = Quaternion.LookRotation(move);
+        }
+        
+        // Update animator
+        _animator.SetBool(moveBoolName, move != Vector3.zero);
+    }
+    
+    private IEnumerator ResetDashTimer()
+    {
+        yield return new WaitForSeconds(dashCooldown);
+        _dashTimer = 0;
     }
 }

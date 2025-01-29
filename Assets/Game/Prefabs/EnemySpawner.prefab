@@ -102,5 +102,5 @@ MonoBehaviour:
   spawnParent: {fileID: 0}
   enemyPrefab: {fileID: 4904605175799010089, guid: afde11782253e0042a2fc6b502f904ad, type: 3}
   maxEnemies: 100
-  spawnFrequency: 4
-  enemiesPerSpawn: 5
+  spawnFrequency: 7
+  enemiesPerSpawn: 2
