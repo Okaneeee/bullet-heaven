@@ -46,7 +46,7 @@ public class SpinningOrbAttack : MonoBehaviour
         for (int i = 0; i < _currentOrbs; i++)
         {
             float angle = i * Mathf.PI * 2 / _currentOrbs + Time.time * spinningSpeed;
-            Vector3 offset = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * orbitRadius;
+            Vector3 offset = new Vector3(Mathf.Cos(angle), 0.5f, Mathf.Sin(angle)) * orbitRadius;
             _orbs[i].transform.position = transform.position + offset;
         }
     }
